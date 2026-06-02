@@ -221,8 +221,11 @@ let currentLang = DEFAULT_LANG;
 let topbar = null;
 
 let touchStartX = 0;
+let touchStartY = 0;
 let touchEndX = 0;
-const swipeThreshold = 50;
+let touchEndY = 0;
+const swipeThreshold = 40;
+const verticalThreshold = 60;
 
 let teamSliderState = {
   track: null,
@@ -559,11 +562,13 @@ function prev() {
 }
 
 function handleTeamSwipe() {
-  const diff = touchStartX - touchEndX;
+  const diffX = touchEndX - touchStartX;
+  const diffY = touchEndY - touchStartY;
 
-  if (Math.abs(diff) < swipeThreshold) return;
+  if (Math.abs(diffY) > verticalThreshold) return;
+  if (Math.abs(diffX) < swipeThreshold) return;
 
-  if (diff > 0) {
+  if (diffX < 0) {
     next();
   } else {
     prev();
@@ -818,7 +823,9 @@ function initTeamEvents() {
     viewport.addEventListener(
       "touchstart",
       (e) => {
-        touchStartX = e.changedTouches[0].screenX;
+        const touch = e.changedTouches[0];
+        touchStartX = touch.clientX;
+        touchStartY = touch.clientY;
       },
       { passive: true }
     );
@@ -826,7 +833,9 @@ function initTeamEvents() {
     viewport.addEventListener(
       "touchend",
       (e) => {
-        touchEndX = e.changedTouches[0].screenX;
+        const touch = e.changedTouches[0];
+        touchEndX = touch.clientX;
+        touchEndY = touch.clientY;
         handleTeamSwipe();
       },
       { passive: true }
