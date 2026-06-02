@@ -784,6 +784,13 @@ button{
   border-color:var(--accent);
 }
 
+#teamViewport,
+#teamTrack,
+.team-card {
+  touch-action: pan-y;
+}
+
+
 /* =========================
    STORIES
 ========================= */
