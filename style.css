@@ -207,7 +207,15 @@ button{
   padding:56px 0 56px;
   position:relative;
   z-index:3;
+  
 }
+main,
+section,
+footer{
+  position:relative;
+  z-index:1;
+}
+
 
 /* =========================
    TOPBAR
@@ -224,6 +232,8 @@ button{
 
 
 .topbar-inner{
+  position:relative;
+  z-index:10000;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -243,6 +253,7 @@ button{
     box-shadow .32s var(--ease),
     padding .32s var(--ease);
 }
+
 
 .topbar.is-scrolled .topbar-inner{
   transform:scale(.955);
@@ -995,7 +1006,7 @@ button{
 .lang-modal{
   position:fixed;
   inset:0;
-  z-index:120;
+  z-index:20000;
   display:grid;
   place-items:center;
   padding:20px;
