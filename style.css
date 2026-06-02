@@ -138,11 +138,10 @@ button{
    INTRO SHELL
 ========================= */
 .intro-shell{
-  position:relative;
-  z-index:1000;
   overflow:visible;
   border-bottom:1px solid rgba(201,162,74,.32);
 }
+
 .intro-shell::before,
 .intro-shell::after{
   pointer-events:none;
@@ -196,25 +195,16 @@ button{
   width:min(100% - 32px,var(--container));
   margin:0 auto;
   padding:100px 0 28px;
-  position:relative;
-  z-index:1001;
 }
+
 
 
 .app{
   width:min(100% - 32px,var(--container));
   margin:0 auto;
   padding:56px 0 56px;
-  position:relative;
-  z-index:3;
-  
 }
-main,
-section,
-footer{
-  position:relative;
-  z-index:1;
-}
+
 
 
 /* =========================
@@ -1094,6 +1084,28 @@ footer{
     background .25s var(--ease),
     color .25s var(--ease);
 }
+.intro-shell{
+  position:relative;
+  overflow:visible;
+  border-bottom:1px solid rgba(201,162,74,.32);
+}
+.intro-inner{
+  width:min(100% - 32px,var(--container));
+  margin:0 auto;
+  padding:100px 0 28px;
+  position:relative;
+}
+.app{
+  width:min(100% - 32px,var(--container));
+  margin:0 auto;
+  padding:56px 0 56px;
+  position:relative;
+}
+main,
+section,
+footer{
+  position:relative;
+}
 
 .lang-choice:hover{
   transform:translateY(-2px);
@@ -1463,97 +1475,74 @@ html[dir="rtl"] .menu-lang-switch{
   }
 }
 
-/* ========================================
-   FIX: Layering / z-index for hero + modal
-   Paste at the END of your CSS file
-======================================== */
 
-/* Base content should stay below overlays/modals */
-.app,
+
+.intro-shell{
+  position:relative;
+  overflow:visible;
+  border-bottom:1px solid rgba(201,162,74,.32);
+}
+
+.intro-inner{
+  width:min(100% - 32px,var(--container));
+  margin:0 auto;
+  padding:100px 0 28px;
+  position:relative;
+  z-index:2;
+}
+
+.app{
+  width:min(100% - 32px,var(--container));
+  margin:0 auto;
+  padding:56px 0 56px;
+  position:relative;
+  z-index:1;
+}
+
 main,
-footer,
-.intro-shell,
-.intro-inner,
-.hero,
-.hero-content {
-  position: relative;
-  z-index: 1;
+section,
+footer{
+  position:relative;
+  z-index:1;
 }
 
-/* Hero decorative layers must never sit above modal */
-.intro-shell::before,
-.intro-shell::after,
-.hero::before,
-.hero::after {
-  pointer-events: none;
-  z-index: 0 !important;
+.topbar{
+  position:fixed;
+  top:14px;
+  left:50%;
+  transform:translateX(-50%);
+  width:min(100% - 32px,var(--container));
+  z-index:10000;
+  margin-bottom:0;
 }
 
-/* Top navigation stays above page content */
-.topbar {
-  position: fixed;
-  z-index: 1000 !important;
+.topbar-inner{
+  position:relative;
+  z-index:10001;
 }
 
-/* Mobile menu should be above topbar */
-.menu-panel,
-.menu-backdrop,
-.nav-open .menu-panel,
-.nav-open .menu-backdrop {
-  position: fixed;
-  z-index: 1100 !important;
+.menu-panel{
+  position:absolute;
+  z-index:10002;
 }
 
-/* Language modal must ALWAYS be above everything */
-.lang-modal {
-  position: fixed !important;
-  inset: 0 !important;
-  z-index: 99999 !important;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.lang-modal{
+  position:fixed;
+  inset:0;
+  z-index:99999;
 }
 
-/* If your modal uses hidden/open classes */
-.lang-modal[hidden] {
-  display: none !important;
+.lang-modal-backdrop{
+  position:absolute;
+  inset:0;
 }
 
-.lang-modal.is-open,
-.lang-modal.open,
-.lang-modal[aria-hidden="false"] {
-  display: flex !important;
+.lang-modal-dialog{
+  position:relative;
+  z-index:1;
 }
 
-/* Modal backdrop */
-.lang-modal-backdrop,
-.lang-modal .backdrop,
-.lang-modal__backdrop {
-  position: absolute !important;
-  inset: 0 !important;
-  background: rgba(15, 23, 42, 0.55) !important;
-  z-index: 0 !important;
-}
-
-/* Modal dialog/card */
-.lang-modal-dialog,
-.lang-modal .dialog,
-.lang-modal__dialog,
-.lang-modal .modal-card,
-.lang-modal .modal-content {
-  position: relative !important;
-  z-index: 1 !important;
-}
-
-/* Optional: force modal text to be visible
-   Uncomment if title/text are still hidden by old CSS */
-
-/*
 [data-lang-modal-title],
-[data-lang-modal-text] {
-  display: block !important;
-  visibility: visible !important;
-  opacity: 1 !important;
+[data-lang-modal-text]{
+  display:block !important;
 }
-*/
