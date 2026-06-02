@@ -21,14 +21,56 @@
     <span class="b3"></span>
   </div>
 
+  <!-- Topbar moved outside header -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="#" class="brand" aria-label="ACE home">
+        <span class="brand-mark">A</span>
+        <span data-i18n="text.brand">ACE</span>
+      </a>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        type="button"
+        aria-expanded="false"
+        aria-controls="menuPanel"
+        aria-label="Open menu"
+      >
+        <span class="menu-lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <nav class="menu-panel" id="menuPanel" aria-label="Main menu">
+        <a href="#about" data-i18n="text.navAbout">About Us</a>
+        <a href="#team" data-i18n="text.navTeam">Our Team</a>
+        <a href="#stories" data-i18n="text.navStories">Success Stories</a>
+        <a href="#footer" data-i18n="text.navContact">Contact Us</a>
+
+        <div class="menu-lang-switch" aria-label="Language switcher">
+          <button id="langSwitchEn" type="button" class="menu-lang-btn is-active">
+            <span aria-hidden="true">🇬🇧</span>
+            <span>EN</span>
+          </button>
+          <button id="langSwitchFa" type="button" class="menu-lang-btn">
+            <span aria-hidden="true">🇮🇷</span>
+            <span>FA</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
   <!-- Language Modal -->
   <div class="lang-modal" id="langModal" aria-hidden="false">
     <div class="lang-modal-backdrop" id="langModalBackdrop"></div>
     <div class="lang-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="langModalTitle">
       <div class="lang-modal-card">
-
-		<h2 id="langModalTitle" data-lang-modal-title hidden></h2>
-		<p data-lang-modal-text hidden></p>
+        <h2 id="langModalTitle" data-lang-modal-title></h2>
+        <p data-lang-modal-text></p>
 
         <div class="lang-modal-actions">
           <button class="lang-choice lang-choice-en" type="button" data-lang-choice="en">
@@ -47,49 +89,7 @@
 
   <header class="intro-shell">
     <div class="intro-inner">
-      <div class="topbar">
-        <div class="topbar-inner">
-          <a href="#" class="brand" aria-label="ACE home">
-            <span class="brand-mark">A</span>
-            <span data-i18n="text.brand">ACE</span>
-          </a>
-
-          <button
-            class="menu-btn"
-            id="menuBtn"
-            type="button"
-            aria-expanded="false"
-            aria-controls="menuPanel"
-            aria-label="Open menu"
-          >
-            <span class="menu-lines" aria-hidden="true">
-              <span></span>
-              <span></span>
-              <span></span>
-            </span>
-          </button>
-
-          <nav class="menu-panel" id="menuPanel" aria-label="Main menu">
-            <a href="#about" data-i18n="text.navAbout">About Us</a>
-            <a href="#team" data-i18n="text.navTeam">Our Team</a>
-            <a href="#stories" data-i18n="text.navStories">Success Stories</a>
-            <a href="#footer" data-i18n="text.navContact">Contact Us</a>
-
-            <div class="menu-lang-switch" aria-label="Language switcher">
-              <button id="langSwitchEn" type="button" class="menu-lang-btn is-active">
-                <span aria-hidden="true">🇬🇧</span>
-                <span>EN</span>
-              </button>
-              <button id="langSwitchFa" type="button" class="menu-lang-btn">
-                <span aria-hidden="true">🇮🇷</span>
-                <span>FA</span>
-              </button>
-            </div>
-          </nav>
-        </div>
-      </div>
-
-      <section class="hero">
+      <section class="hero" id="home">
         <h1 data-i18n-html="text.heroTitle">Grow With <em>Clarity.</em></h1>
 
         <p data-i18n="text.heroDesc">
@@ -125,36 +125,21 @@
     <section class="section reveal">
       <div class="stats">
         <article class="stat card">
-          <div
-            class="stat-num"
-            data-stat="leaders"
-            data-count="240"
-            data-suffix=""
-          >
+          <div class="stat-num" data-stat="leaders" data-count="240" data-suffix="">
             0
           </div>
           <div class="stat-label" data-i18n="text.stat1">Leaders Coached</div>
         </article>
 
         <article class="stat card">
-          <div
-            class="stat-num"
-            data-stat="satisfaction"
-            data-count="98"
-            data-suffix="%"
-          >
+          <div class="stat-num" data-stat="satisfaction" data-count="98" data-suffix="%">
             0
           </div>
           <div class="stat-label" data-i18n="text.stat2">Client Satisfaction</div>
         </article>
 
         <article class="stat card">
-          <div
-            class="stat-num"
-            data-stat="experience"
-            data-count="12"
-            data-suffix="+"
-          >
+          <div class="stat-num" data-stat="experience" data-count="12" data-suffix="+">
             0
           </div>
           <div class="stat-label" data-i18n="text.stat3">Years Experience</div>
