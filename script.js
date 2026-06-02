@@ -220,6 +220,10 @@ const DEFAULT_LANG = "en";
 let currentLang = DEFAULT_LANG;
 let topbar = null;
 
+let touchStartX = 0;
+let touchEndX = 0;
+const swipeThreshold = 50;
+
 let teamSliderState = {
   track: null,
   viewport: null,
@@ -288,11 +292,10 @@ function updateStaticTexts() {
     );
   }
 
-   const langModalTitle = document.querySelector("[data-lang-modal-title]");
+  const langModalTitle = document.querySelector("[data-lang-modal-title]");
   const langModalText = document.querySelector("[data-lang-modal-text]");
   if (langModalTitle) langModalTitle.textContent = "";
   if (langModalText) langModalText.textContent = "";
-
 
   const langFaText = document.querySelectorAll("[data-lang-label='fa']");
   const langEnText = document.querySelectorAll("[data-lang-label='en']");
@@ -401,7 +404,7 @@ function buildTeamCard(member) {
       <h3 class="team-name">${member.name}</h3>
       <p class="team-role">${member.role}</p>
       <p class="team-desc">${member.desc}</p>
-      <div class="team-tags">${member.tags.map(tag => `<span>${tag}</span>`).join("")}</div>
+      <div class="team-tags">${member.tags.map((tag) => `<span>${tag}</span>`).join("")}</div>
     </article>
   `;
 }
@@ -553,6 +556,20 @@ function next() {
 function prev() {
   teamSliderState.index--;
   renderTeam(true);
+}
+
+function handleTeamSwipe() {
+  const diff = touchStartX - touchEndX;
+
+  if (Math.abs(diff) < swipeThreshold) return;
+
+  if (diff > 0) {
+    next();
+  } else {
+    prev();
+  }
+
+  resetAuto();
 }
 
 function startAuto() {
@@ -797,6 +814,23 @@ function initTeamEvents() {
     viewport.addEventListener("mouseleave", resetAuto);
     viewport.addEventListener("focusin", stopAuto);
     viewport.addEventListener("focusout", resetAuto);
+
+    viewport.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      },
+      { passive: true }
+    );
+
+    viewport.addEventListener(
+      "touchend",
+      (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleTeamSwipe();
+      },
+      { passive: true }
+    );
   }
 
   document.addEventListener("visibilitychange", () => {
@@ -821,6 +855,5 @@ function initApp() {
   applyLanguage(DEFAULT_LANG, false);
   openLangModal();
 }
-
 
 document.addEventListener("DOMContentLoaded", initApp);
