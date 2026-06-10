@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ArtiOne — Professional Counselors</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=Vazirmatn:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="beauty.css" />
+</head>
+<body>
+  <div class="grain-overlay" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+  <div class="bg-soft" aria-hidden="true">
+    <span class="b1"></span>
+    <span class="b2"></span>
+    <span class="b3"></span>
+    <span class="b4"></span>
+  </div>
+
+  <!-- Topbar moved outside header -->
+  <div class="topbar">
+    <div class="topbar-inner">
+      <a href="#" class="brand" aria-label="ArtiOne home">
+        <span class="brand-mark">A</span>
+        <span data-i18n="text.brand">ArtiOne</span>
+      </a>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        type="button"
+        aria-expanded="false"
+        aria-controls="menuPanel"
+        aria-label="Open menu"
+      >
+        <span class="menu-lines" aria-hidden="true">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+      <nav class="menu-panel" id="menuPanel" aria-label="Main menu">
+        <a href="#team" data-i18n="text.navTeam">Our Counselors</a>
+        <a href="#stories" data-i18n="text.navStories">Client Stories</a>
+        <a href="#footer" data-i18n="text.navContact">Contact Us</a>
+
+        <div class="menu-lang-switch" aria-label="Language switcher">
+          <button id="langSwitchEn" type="button" class="menu-lang-btn is-active">
+            <span aria-hidden="true">🇬🇧</span>
+            <span>EN</span>
+          </button>
+          <button id="langSwitchFa" type="button" class="menu-lang-btn">
+            <span aria-hidden="true">🇮🇷</span>
+            <span>FA</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- Language Modal -->
+  <div class="lang-modal" id="langModal" aria-hidden="false">
+    <div class="lang-modal-backdrop" id="langModalBackdrop"></div>
+    <div class="lang-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="langModalTitle">
+      <div class="lang-modal-card">
+        <div class="lang-modal-glow" aria-hidden="true"></div>
+        <h2 id="langModalTitle" data-lang-modal-title></h2>
+        <p data-lang-modal-text></p>
+
+        <div class="lang-modal-actions">
+          <button class="lang-choice lang-choice-en" type="button" data-lang-choice="en">
+            <span class="lang-flag" aria-hidden="true">🇬🇧</span>
+            <span data-lang-label="en">English language</span>
+          </button>
+
+          <button class="lang-choice lang-choice-fa" type="button" data-lang-choice="fa">
+            <span class="lang-flag" aria-hidden="true">🇮🇷</span>
+            <span data-lang-label="fa">زبان فارسی</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="intro-shell">
+    <div class="intro-inner">
+      <section class="hero" id="home">
+        <p class="hero-badge" data-i18n="text.heroBadge">Professional Counseling</p>
+
+        <div class="hero-glow" aria-hidden="true"></div>
+
+        <div class="hero-rotator" id="heroRotator" aria-live="polite">
+          <div class="hero-slide-track" id="heroSlideTrack"></div>
+        </div>
+
+        <div class="hero-dots" id="heroDots" aria-hidden="true"></div>
+
+        <div class="hero-actions">
+          <a href="#footer" class="cta" data-i18n="text.heroCtaPrimary">Book a Session</a>
+          <a href="#stories" class="cta-ghost" data-i18n="text.heroCtaSecondary">Client Stories</a>
+        </div>
+
+        <a href="#team" class="scroll-hint" aria-label="Scroll to content">
+          <span class="scroll-hint-line"></span>
+          <span class="scroll-hint-text" data-i18n="text.scrollHint">Explore</span>
+        </a>
+      </section>
+    </div>
+  </header>
+
+  <!-- Team member modal -->
+  <div class="team-modal" id="teamModal" aria-hidden="true">
+    <div class="team-modal-backdrop" id="teamModalBackdrop"></div>
+    <div
+      class="team-modal-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="teamModalName"
+    >
+      <button class="team-modal-close" id="teamModalClose" type="button" aria-label="Close">
+        ×
+      </button>
+      <div class="team-modal-card card">
+        <div class="team-modal-photo-wrap">
+          <img class="team-modal-photo" id="teamModalPhoto" src="" alt="" />
+        </div>
+        <h3 class="team-modal-name" id="teamModalName"></h3>
+        <p class="team-modal-role" id="teamModalRole"></p>
+        <p class="team-modal-bio" id="teamModalBio"></p>
+        <div class="team-modal-tags" id="teamModalTags"></div>
+      </div>
+    </div>
+  </div>
+
+  <main class="app">
+    <div class="section-ornament" aria-hidden="true"><span></span></div>
+
+    <section class="section reveal" id="team">
+      <div class="team-header">
+        <span class="eyebrow" data-i18n="text.teamEyebrow">Compassionate experts</span>
+        <h2 class="section-title" data-i18n="text.teamTitle">Meet Our Counselors</h2>
+      </div>
+
+      <div class="team-shell">
+        <button class="arrow-btn" id="prevTeam" type="button" aria-label="Previous team member">
+          ‹
+        </button>
+
+        <div class="team-viewport" id="teamViewport">
+          <div class="team-track" id="teamTrack" aria-live="polite"></div>
+        </div>
+
+        <button class="arrow-btn" id="nextTeam" type="button" aria-label="Next team member">
+          ›
+        </button>
+      </div>
+
+      <div class="team-dots" id="teamDots" aria-label="Team navigation"></div>
+    </section>
+
+    <div class="section-ornament" aria-hidden="true"><span></span></div>
+
+    <section class="section reveal" id="stories">
+      <span class="eyebrow" data-i18n="text.storiesEyebrow">Lives changed</span>
+      <h2 class="section-title" data-i18n="text.storiesTitle">Client Stories</h2>
+
+      <div class="stories-list" id="storiesList"></div>
+    </section>
+  </main>
+
+  <div class="section-ornament section-ornament--footer" aria-hidden="true"><span></span></div>
+
+  <footer class="section contact-section reveal" id="footer">
+    <div class="contact-glow" aria-hidden="true"></div>
+    <div class="footer-card card contact-card">
+      <div class="contact-header">
+        <a href="#home" class="brand footer-brand" aria-label="ArtiOne home">
+          <span class="brand-mark">A</span>
+          <span data-i18n="text.brand">ArtiOne</span>
+        </a>
+        <div class="contact-gold-line" aria-hidden="true"></div>
+      </div>
+
+      <form class="contact-form" id="contactForm" novalidate>
+        <label class="visually-hidden" for="contactInput" data-i18n="text.contactLabel">
+          Your email or phone
+        </label>
+        <input
+          type="text"
+          id="contactInput"
+          name="contact"
+          autocomplete="email tel"
+          data-i18n-placeholder="text.contactPlaceholder"
+          placeholder="Your email or phone number"
+          required
+        />
+        <button type="submit" class="cta contact-submit" data-i18n="text.contactSubmit">
+          Send
+        </button>
+        <p class="contact-status" id="contactStatus" role="status" aria-live="polite" hidden></p>
+      </form>
+    </div>
+  </footer>
+
+  <!-- Chat assistant -->
+  <button
+    class="chat-fab"
+    id="chatFab"
+    type="button"
+    aria-expanded="false"
+    aria-controls="chatPanel"
+    data-i18n-aria="ui.openChat"
+  >
+    <span class="chat-fab-icon" aria-hidden="true">✦</span>
+    <span class="chat-fab-label" data-i18n="text.chatFab">Ask ArtiOne</span>
+  </button>
+
+  <div class="chat-panel" id="chatPanel" aria-hidden="true">
+    <div class="chat-panel-inner card">
+      <header class="chat-header">
+        <div>
+          <strong data-i18n="text.chatTitle">ArtiOne Assistant</strong>
+          <span class="chat-sub" data-i18n="text.chatSubtitle">Questions about counseling</span>
+        </div>
+        <button class="chat-close" id="chatClose" type="button" data-i18n-aria="ui.closeChat">×</button>
+      </header>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <form class="chat-form" id="chatForm">
+        <label class="visually-hidden" for="chatInput" data-i18n="text.chatInputLabel">Your question</label>
+        <input
+          type="text"
+          id="chatInput"
+          data-i18n-placeholder="text.chatPlaceholder"
+          placeholder="Ask about counselors, sessions…"
+          autocomplete="off"
+        />
+        <button type="submit" class="chat-send" data-i18n="text.chatSend">Send</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
